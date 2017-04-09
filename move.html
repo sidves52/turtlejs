@@ -1,0 +1,30 @@
+<head>
+<script src="ext/mousetrap.js"></script>
+<script src="ext/jquery-3.2.0.min.js"></script>
+<script src="move.js"></script>
+</head>
+
+<body>
+<div>
+<svg style="width: 600px; height:600px;">
+<!--    <image xlink:href="img/livingroom.jpg" x="0" y="0" height="500px" width="500px"/> -->
+    <g id="person" data-x="20" data-y="20" transform="translate(20,20)">
+        <circle cx="10" cy="8" r="9.5" style="fill:black;"></circle>
+        <polygon points="14,5 6,5 6,25 14,25" style="fill:black;stroke:black;stroke-width:1"></polygon>
+        <polygon points="0,20 20,20 20,50 0,50" style="fill:black;stroke:black;stroke-width:1"></polygon>
+        <line x1="0" y1="25" x2="-7" y2="48" stroke-width="8" stroke="black"></line>
+        <line x1="20" y1="25" x2="27" y2="48" stroke-width="8" stroke="black"></line>
+        <line x1="5" y1="50" x2="5" y2="70" stroke-width="8" stroke="black"></line>
+        <line x1="15" y1="50" x2="15" y2="70" stroke-width="8" stroke="black"></line>
+    </g>
+    <rect height="375" width="500" style="fill:none;stroke:black;stroke-width:3"></rect>
+    <!--triangle below-->
+    <polygon id="spike1" points="245,375 250,362 255,375" style="fill:red;stroke:red;stroke-width:1"></polygon>
+    <polygon id="spike2" points="235,375 240,362 245,375" style="fill:red;stroke:red;stroke-width:1"></polygon>
+</svg>
+</div>
+<script>
+    var m = mover();
+    m.initialize();
+</script>
+</body>
