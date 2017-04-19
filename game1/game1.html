@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+<script src="../ext/mousetrap.js"></script>
+<script src="../ext/jquery-3.2.0.min.js"></script>
+<script src="game1.js"></script>
+<script src="person.js"></script>
+<script src="spike.js"></script>
+<script src="ball.js"></script>
+<script src="misc.js"></script>
+</head>
+
+<body>
+<div>
+    <svg id="world" style="width: 600px; height:600px;">
+        <rect x="0" y="0" width="600" height="600" style="stroke:black;fill:none;stroke-width:5;"></rect>
+    </svg>
+
+    <div>
+        <span>Score</span>
+        <span id="score">0</span>
+        <span>/</span>
+        <span id="max">0</span>
+    </div>
+</div>
+
+<div id="person_template" style="display:none;">
+    <svg>
+        <g data-x="20" data-y="20" transform="translate(20,20)">
+            <circle cx="10" cy="8" r="9.5" style="fill:black;"></circle>
+            <polygon points="14,5 6,5 6,25 14,25" style="fill:black;stroke:black;stroke-width:1"></polygon>
+            <polygon points="0,20 20,20 20,50 0,50" style="fill:black;stroke:black;stroke-width:1"></polygon>
+            <line x1="0" y1="25" x2="-7" y2="48" stroke-width="8" stroke="black"></line>
+            <line x1="20" y1="25" x2="27" y2="48" stroke-width="8" stroke="black"></line>
+            <line id="leg1" x1="5" y1="50" x2="5" y2="70" stroke-width="8" stroke="black"></line>
+            <line id="leg2" x1="15" y1="50" x2="15" y2="70" stroke-width="8" stroke="black"></line>
+        </g>
+    </svg>
+</div>
+
+<script>
+    var w = gameworld();
+    w.width(600);
+    w.height(600);
+    w.create();
+    w.start();
+</script>
+</body>

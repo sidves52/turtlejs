@@ -1,5 +1,5 @@
 var mover = function() {
-    console.log("yup2");
+    console.log("working so far!");
     var m = function() {};
     var globalCounter = 20;
     var globalDelay = 5;
@@ -15,33 +15,35 @@ var mover = function() {
 
     };
 
-    function overlaps(objectId1, objectId2) {
-        var r1 = $('#' + objectId1).get()[0].getBoundingClientRect();
-        var r2 = $('#' + objectId2).get()[0].getBoundingClientRect();
-        return !(r2.left > r1.right ||
-                   r2.right < r1.left ||
-                   r2.top > r1.bottom ||
-                   r2.bottom < r1.top);
+    function overlaps(oId1, oId2, oId3, oId4) {
+        var r1 = $('#' + oId1).get()[0].getBoundingClientRect();
+        var r2 = $('#' + oId2).get()[0].getBoundingClientRect();
+        }
+        if !(oId3) {
+            return !(r2.left > r1.right ||
+                        r2.right < r1.left ||
+                        r2.top > r1.bottom ||
+                        r2.bottom < r1.top);
+        }
     };
 
-    function draw() {
+    function draw(Flog) {
         var $g = $('#person')
         var x = +($g.attr('data-x'));
         var y = +($g.attr('data-y'));
         var s = "translate(" + x + "," + y + ")";
         var obstasChecked = obstaCount;
-        var spike = "spike" + spikesChecked;
+        var spike = "spike" + obstasChecked;
         $g.attr('transform', s);
-        console.log(s);
+        console.log(Flog + " now at " + s);
         var dead = false;
-        while (obtsasChecked > 0) {
-            console.log(overlaps('person', 'spike' + obtsasChecked))
-            if (overlaps('person', 'spike' + obtsasChecked)) {
-                dead = true;
+        while (obstasChecked > 0) {
+            console.log(overlaps('person', 'spike' + obstasChecked))
+            if (overlaps('person', 'spike' + obstasChecked)) {
+                dead = 1
             }
-            --spikesChecked;
+            --obstasChecked;
         }
-
         if (dead == true) {
             console.log('ouch!');
             $g.attr('data-x', '20');
@@ -57,9 +59,6 @@ var mover = function() {
         var counter = config.counter || globalCounter;
         var delay = config.delay || globalDelay;
         var alldone = config.alldone;
-
-        console.log("repeatcaller");
-        console.log(counter);
         iter();
         function iter() {
             if (counter > 0) {
@@ -80,7 +79,6 @@ var mover = function() {
     };
 
     m.right = function() {
-        console.log("funconeright");
         repeatCaller(oneright);
     };
 
@@ -110,25 +108,23 @@ var mover = function() {
     };
 
     function oneleft() {
-        console.log("oneleft");
         var $g = $('#person');
         var x = +($g.attr('data-x'));
-        if (x > 1) {
+        if (x > 12) {
             x -= 1;
         }
         $g.attr('data-x', x);
-        draw();
+        draw("left");
     };
 
     function oneright() {
-        console.log("oneright");
         var $g = $('#person');
         var x = +($g.attr('data-x'));
-        if (x < 480) {
+        if (x < 469) {
             x += 1;
         }
         $g.attr('data-x', x);
-        draw();
+        draw("right");
     };
 
     function oneup() {
@@ -138,7 +134,7 @@ var mover = function() {
             y -= 1;
         }
         $g.attr('data-y', y);
-        draw();
+        draw("up");
     };
 
     function onedown() {
@@ -148,7 +144,7 @@ var mover = function() {
             y += 1;
         }
         $g.attr('data-y', y);
-        draw();
+        draw("down");
     };
 
     return m;
