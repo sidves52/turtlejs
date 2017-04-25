@@ -46,11 +46,11 @@ function gameworld() {
     w.create = function() {
         var b;
 
-        var ballCount = 250;
+        var ballCount = 5;
         for (var i = 0; i < ballCount; ++i) {
             b = ball();
-            b.position(Math.random() * 600, Math.random() * 600);
-            b.force(Math.random() > 0.5 ? 10 : -10);
+            b.position(200, 100);
+            b.force(10);
             os.push(b);
         }
 
@@ -88,8 +88,10 @@ function gameworld() {
             os.forEach(function(o) {
                 if (o.hidden()) {
                     hiddenCount++;
+                    console.log(o, hiddenCount);
                 }
             });
+            console.log('done');
             $('#score').text(hiddenCount);
 
             setTimeout(iter, timeUnit);
