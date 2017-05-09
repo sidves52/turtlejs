@@ -13,7 +13,6 @@ function gameworld() {
     };
 
     w.collisionCallback = function(sourceObj, sourceRect, cb) {
-        // console.log(sourceRect);
         os.forEach(function(o) {
             if (o === sourceObj) {
                 return;
