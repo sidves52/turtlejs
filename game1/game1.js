@@ -45,7 +45,7 @@ function gameworld() {
     w.create = function() {
         var b;
 
-        var ballCount = 5;
+        var ballCount = 25;
         for (var i = 0; i < ballCount; ++i) {
             b = ball();
             b.position(200, 100);
